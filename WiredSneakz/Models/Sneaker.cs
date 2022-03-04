@@ -7,7 +7,6 @@ namespace WiredSneakz.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
         public string Colorway { get; set; }
