@@ -15,7 +15,9 @@ namespace WiredSneakz
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var bookLinks = GetBookLinks("http://books.toscrape.com/cataolgue/category/books/mystery_3/index.html");
+            Console.WriteLine("Found {0} links", bookLinks.Count);
+            //CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -32,6 +34,20 @@ namespace WiredSneakz
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load(url);
             return doc;
+        }
+
+        static List<string> GetBookLinks(string url)
+        {
+            var bookLinks = new List<string>();
+            HtmlDocument doc = GetDocument(url);
+            HtmlNodeCollection linkNodes = doc.DocumentNode.SelectNodes("//h3/a");
+            var baseUri = new Uri(url);
+            foreach (var link in linkNodes)
+            {
+                string href = link.Attributes["href"].Value;
+                bookLinks.Add(new Uri(baseUri, href).AbsoluteUri);
+            }
+            return bookLinks;
         }
     }
 }
