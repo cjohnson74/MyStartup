@@ -11,5 +11,6 @@ namespace WiredSneakz.Models
         public DateTime ReleaseDate { get; set; }
         public string Colorway { get; set; }
         public decimal Price { get; set; }
+        public string Image { get; set; }
     }
 }
