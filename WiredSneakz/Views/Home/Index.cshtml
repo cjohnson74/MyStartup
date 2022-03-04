@@ -34,3 +34,20 @@
         }
     </tbody>
 </table>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <p class="card-text">Id: @item.Id</p>
+                <p class="card-text">Release Date: @item.ReleaseDate</p>
+                <p class="card-text">Color Way: @item.Colorway</p>
+                <p class="card-text">Price: @item.Price</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    }
+</div>
